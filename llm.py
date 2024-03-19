@@ -1,14 +1,14 @@
 import streamlit as st
 from langchain_openai import ChatOpenAI
-from langchain_openai import OpenAIEmbeddings
+from langchain_mistralai.chat_models import ChatMistralAI
 
-embeddings = OpenAIEmbeddings(
-    openai_api_key=st.secrets["OPENAI_API_KEY"],
-    openai_organization=st.secrets["OPENAI_ORGANIZATION"]
-)
-
-llm = ChatOpenAI(
+openai = ChatOpenAI(
     openai_api_key=st.secrets["OPENAI_API_KEY"],
     model=st.secrets["OPENAI_MODEL"],
     openai_organization=st.secrets["OPENAI_ORGANIZATION"],
+)
+
+mistral_large = ChatMistralAI(
+    endpoint=st.secrets["MISTRAL_API_TARGET"],
+    mistral_api_key=st.secrets["MISTRAL_API_KEY"],
 )
